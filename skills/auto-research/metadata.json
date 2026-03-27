@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "organization": "tylergibbs",
   "date": "March 2026",
   "abstract": "Autonomous research loop that iteratively experiments on code, measures results against a target metric, keeps improvements, and discards failures. Runs indefinitely without human intervention. Works in any project with a measurable metric.",
