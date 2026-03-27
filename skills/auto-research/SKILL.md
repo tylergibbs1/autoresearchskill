@@ -40,28 +40,20 @@ Otherwise:
 
    Wait for both agents to return before proceeding.
 
-2. **Present findings and ask 3 questions** (use `AskUserQuestion` if available):
+2. **Present findings and ask one question** (use `AskUserQuestion` if available):
 
-   First, summarize what the subagents found:
    > I've explored your project. Here's what I found:
    > - [brief project summary from Agent 1]
    > - [existing benchmarks/metrics from Agent 2]
-
-   Then ask these 3 questions:
-
-   > **1. What do you want to optimize?**
+   >
+   > **What do you want to optimize?**
    > e.g., a metric (latency, accuracy, bundle size), a general goal ("make it faster"),
    > or a specific area of the code.
-   >
-   > **2. What command runs an experiment?**
-   > e.g., `python bench.py`, `npm test`, `cargo bench`. If you're not sure, I can
-   > try to figure it out from your project.
-   >
-   > **3. Which files should I experiment on?**
-   > e.g., `train.py`, `src/model.ts`. The fewer files, the more focused and
-   > reviewable each experiment will be.
 
-   Infer reasonable defaults for anything the user doesn't answer:
+   Infer everything else from the project exploration:
+   - `run_command`: from build system / existing bench scripts found by Agent 2
+   - `modifiable_files`: from the user's answer + project structure
+   - `readonly_files`: context files related to the modifiable ones
    - `timeout_seconds`: 2x expected runtime, or 300
    - `metric_direction`: infer from name (loss/latency/size → lower; speed/accuracy → higher)
    - `tag`: today's date (e.g., `mar26`)
