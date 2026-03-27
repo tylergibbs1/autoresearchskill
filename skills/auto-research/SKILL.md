@@ -26,8 +26,19 @@ If `research.json` exists, skip to [Setup Phase](#setup-phase).
 
 Otherwise:
 
-1. **Explore the project silently** — read README/docs, scan file structure, identify
-   language/framework, find existing benchmarks or evaluation scripts
+1. **Explore the project with 2 parallel subagents** — launch both simultaneously
+   using the `Agent` tool:
+
+   **Agent 1 — Structure & Stack**: Scan directory tree, identify language/framework/
+   build system, read README and top-level config files (package.json, pyproject.toml,
+   Cargo.toml, etc.), summarize the project's purpose and tech stack.
+
+   **Agent 2 — Metrics & Benchmarks**: Search for existing benchmarks, test suites,
+   evaluation scripts, and measurable metrics. Look for files with "bench", "test",
+   "eval", "metric" in the name. Read any that exist and report what metrics are
+   already being measured and how they're run.
+
+   Wait for both agents to return before proceeding.
 
 2. **Ask the user one question** (use `AskUserQuestion` if available):
 
