@@ -6,13 +6,15 @@ Inspired by [Karpathy's autoresearch](https://github.com/karpathy/autoresearch),
 
 ## Install
 
-Copy the skill into your Claude Code skills directory:
+```bash
+npx skills add tylergibbs1/autoresearchskill
+```
+
+Or install manually:
 
 ```bash
 cp -r skills/auto-research ~/.claude/skills/auto-research
 ```
-
-Or for project-scoped installation, add it to `.claude/skills/` in your repo.
 
 ## Usage
 
