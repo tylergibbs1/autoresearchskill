@@ -1,4 +1,4 @@
-# research.toml Reference
+# research.json Reference
 
 ## Required Fields
 
@@ -24,25 +24,19 @@
 
 ## Example
 
-```toml
-# research.toml
-# Goal: minimize validation loss for transformer training
-
-tag = "mar26"
-
-modifiable_files = ["train.py"]
-readonly_files = ["prepare.py", "README.md"]
-
-run_command = "uv run train.py"
-
-metric_grep = "^val_bpb:"
-metric_name = "val_bpb"
-metric_direction = "lower"
-
-secondary_metrics = ["^peak_vram_mb:"]
-timeout_seconds = 600
-
-soft_constraints = "VRAM should not blow up dramatically"
+```json
+{
+  "tag": "mar26",
+  "modifiable_files": ["train.py"],
+  "readonly_files": ["prepare.py", "README.md"],
+  "run_command": "uv run train.py",
+  "metric_grep": "^val_bpb:",
+  "metric_name": "val_bpb",
+  "metric_direction": "lower",
+  "secondary_metrics": ["^peak_vram_mb:"],
+  "timeout_seconds": 600,
+  "soft_constraints": "VRAM should not blow up dramatically"
+}
 ```
 
 ## Writing Good Configs

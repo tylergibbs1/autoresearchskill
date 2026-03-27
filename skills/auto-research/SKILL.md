@@ -22,7 +22,7 @@ algorithm tuning, performance benchmarking.
 
 ## Discovery Flow
 
-If `research.toml` exists, skip to [Setup Phase](#setup-phase).
+If `research.json` exists, skip to [Setup Phase](#setup-phase).
 
 Otherwise:
 
@@ -43,12 +43,12 @@ Otherwise:
    - `tag`: today's date (e.g., `mar26`)
    - `no_new_dependencies`: true
 
-4. **Write `research.toml`** — see [CONFIG.md](CONFIG.md) for field reference.
+4. **Write `research.json`** — see [CONFIG.md](CONFIG.md) for field reference.
    Show the user for confirmation, then proceed.
 
 ## Setup Phase
 
-1. Parse and validate `research.toml`
+1. Parse and validate `research.json`
 2. Verify `autoresearch/<tag>` branch doesn't exist — if it does, append `-2`, `-3`, etc.
 3. `git checkout -b autoresearch/<tag>`
 4. Read all `readonly_files` and `modifiable_files` for context
