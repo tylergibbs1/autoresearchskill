@@ -1,0 +1,17 @@
+# Example: Performance benchmark optimization
+# Useful for optimizing algorithm speed, memory usage, etc.
+
+tag = "perf-opt"
+
+modifiable_files = ["src/algorithm.py"]
+readonly_files = ["src/types.py", "tests/test_algorithm.py", "benchmarks/bench.py"]
+
+run_command = "python benchmarks/bench.py"
+
+metric_grep = "^throughput_ops_sec:"
+metric_name = "throughput_ops_sec"
+metric_direction = "higher"
+
+secondary_metrics = ["^peak_memory_mb:", "^p99_latency_ms:"]
+
+timeout_seconds = 300

@@ -1,0 +1,17 @@
+# Example: Compiler/code-gen optimization
+# Iteratively improve generated code quality
+
+tag = "codegen"
+
+modifiable_files = ["src/codegen.rs"]
+readonly_files = ["src/ast.rs", "src/parser.rs", "tests/fixtures/*.input"]
+
+run_command = "cargo test --release -- --nocapture benchmark"
+
+metric_grep = "^binary_size_bytes:"
+metric_name = "binary_size_bytes"
+metric_direction = "lower"
+
+secondary_metrics = ["^compile_time_ms:", "^runtime_ms:"]
+
+timeout_seconds = 120
