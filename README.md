@@ -28,30 +28,7 @@ The agent explores your project, asks what you want to optimize, writes a `resea
 
 If you already have a `research.json`, it skips straight to the loop.
 
-## Configuration
-
-The agent writes this for you, but here's the format:
-
-```json
-{
-  "tag": "experiment1",
-  "modifiable_files": ["train.py"],
-  "readonly_files": ["prepare.py", "README.md"],
-  "run_command": "uv run train.py",
-  "metric_grep": "^val_bpb:",
-  "metric_name": "val_bpb",
-  "metric_direction": "lower",
-  "secondary_metrics": ["^peak_vram_mb:"],
-  "timeout_seconds": 600
-}
-```
-
-See `skills/auto-research/examples/` for more:
-- `ml-training.json` — ML model optimization
-- `performance-bench.json` — algorithm performance tuning
-- `compiler-opt.json` — compiler/codegen optimization
-
-## How It Works
+## How it works
 
 ```
 LOOP FOREVER:
@@ -70,3 +47,28 @@ LOOP FOREVER:
 - **Git history** on `autoresearch/<tag>` — each kept improvement is a commit
 - **results.tsv** — full experiment log
 - **run.log** — most recent experiment output
+
+When improvements stall, the agent works through [STRATEGIES.md](skills/auto-research/STRATEGIES.md).
+
+## Configuration
+
+The agent writes this for you, but here's the format:
+
+```json
+{
+  "tag": "experiment1",
+  "modifiable_files": ["train.py"],
+  "readonly_files": ["prepare.py", "README.md"],
+  "run_command": "uv run train.py",
+  "metric_grep": "^val_bpb:",
+  "metric_name": "val_bpb",
+  "metric_direction": "lower",
+  "secondary_metrics": ["^peak_vram_mb:"],
+  "timeout_seconds": 600
+}
+```
+
+The full field reference, including defaults, is in [CONFIG.md](skills/auto-research/CONFIG.md). See [`skills/auto-research/examples/`](skills/auto-research/examples) for more:
+- `ml-training.json` — ML model optimization
+- `performance-bench.json` — algorithm performance tuning
+- `compiler-opt.json` — compiler/codegen optimization
